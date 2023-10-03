@@ -1,0 +1,116 @@
+@import "../../css/_variables";
+@import "../../css/_mixin/_index";
+@import "../../css/_partial/_fixed-button";
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  margin: .5rem 0 1rem 0;
+
+  iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+[theme=dark] {
+  #lyric {
+    .lrc__line {
+      border-bottom: 3px dashed $global-border-color-dark;
+    }
+  }
+}
+
+[theme=black] {
+  #lyric {
+    // border: 3px solid $global-border-color-black;
+
+    .lrc__line {
+      border-bottom: 3px dashed $global-border-color-black;
+    }
+  }
+}
+
+#lyric {
+  // border: 3px solid $global-border-color;
+
+  .lrc__line {
+    // padding: 0 0.5rem;
+    border-bottom: 3px dashed $global-border-color;
+
+    div {
+      margin: 1rem 0;
+
+      &[data-lang="jp_yomi"] {
+        font-size: 1.1em;
+      }
+    }
+
+    // &:first-child {
+    //   border-bottom: 0;
+    // }
+  }
+
+  .active {
+    color: map-get($admonition-color-map, 'note');
+
+    rt {
+      color: map-get($admonition-color-map, 'note');
+    }
+  }
+}
+
+.lrc--full {
+  height: auto;
+}
+
+.lrc--clip {
+  height: 20rem;
+  overflow: hidden scroll;
+  scroll-behavior: smooth;
+}
+
+.lrc--mini {
+  height: 2.2rem;
+  /* when active work remove overflow */
+  overflow: hidden;
+}
+
+/* .lrc--mini .lrc__line {
+  display: none;
+}
+
+.lrc--mini .lrc__line--active {
+  display: block;
+  background: transparent;
+} */
+
+#control-buttons {
+  position: fixed;
+  bottom: 1rem;
+  left: 0;
+  right: 0;
+  opacity: 0.75;
+
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+
+  a {
+    @extend .fixed-button;
+    display: inline;
+    position: relative;
+    right: unset;
+    bottom: unset;
+
+    &#repeat {
+      &.active {
+        color: map-get($admonition-color-map, 'note');
+      }
+    }
+  }
+}
